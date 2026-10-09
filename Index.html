@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Madam Ji 🎂</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Hind:wght@400;600&display=swap">
+<style>
+:root{--bg:#1b1033;--bg2:#2a1850;--ink:#fff4e6;--mute:#c9b8e8;--gold:#ffb627;--pink:#ff3d81;--mint:#7be0c3;--card:#33205f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#fff0f5;--bg2:#ffe0ec;--ink:#3a1a4a;--mute:#7a5a8c;--card:#fff;--gold:#e08a00}}
+:root[data-theme="light"]{--bg:#fff0f5;--bg2:#ffe0ec;--ink:#3a1a4a;--mute:#7a5a8c;--card:#fff;--gold:#e08a00}
+:root[data-theme="dark"]{--bg:#1b1033;--bg2:#2a1850;--ink:#fff4e6;--mute:#c9b8e8;--card:#33205f}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(120% 80% at 50% 0,var(--bg2),var(--bg));background-color:var(--bg);color:var(--ink);font-family:Hind,system-ui,sans-serif;font-size:18px;line-height:1.55;overflow-x:hidden}
+h1,h2{font-family:"Bagel Fat One",Impact,sans-serif;font-weight:400;line-height:1.05;margin:0}
+section{max-width:560px;margin:0 auto;padding:56px 22px;text-align:center}
+h1{font-size:clamp(44px,13vw,76px);color:var(--gold);cursor:pointer;user-select:none;transform:rotate(-2deg)}
+h2{font-size:30px;color:var(--pink);margin-bottom:12px}
+.sub{color:var(--mute)}
+button{font:inherit;font-weight:600;border:0;border-radius:999px;padding:12px 24px;cursor:pointer;background:var(--gold);color:#2a1200;transition:transform .15s}
+button:active{transform:scale(.94)}
+button:focus-visible,#cake:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+button.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--mute)}
+svg{max-width:300px;width:80%;height:auto;overflow:visible}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:fl .6s ease-in-out infinite alternate;cursor:pointer}
+@keyframes fl{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+.out{animation:none;opacity:0;transition:opacity .3s}
+.smoke{opacity:0}.out+.smoke{opacity:.6;transition:opacity .6s}
+#locked{display:none}
+#locked.on{display:block}
+.chat{display:flex;flex-direction:column;gap:10px;text-align:left;margin:20px 0}
+.b{background:var(--card);padding:12px 16px;border-radius:20px 20px 20px 4px;max-width:92%;animation:pop .35s both}
+.b.me{align-self:flex-end;background:var(--pink);color:#fff;border-radius:20px 20px 4px 20px}
+@keyframes pop{from{opacity:0;transform:scale(.85) translateY(10px)}}
+.card{background:var(--card);border-radius:28px;padding:26px 20px;margin-top:8px}
+.row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;min-height:64px;align-items:center;position:relative}
+input[type=range]{width:100%;accent-color:var(--pink);margin:18px 0 6px}
+.big{font-size:56px;transition:transform .2s}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);background:var(--mint);color:#06281f;padding:10px 18px;border-radius:999px;font-weight:600;transition:transform .35s;z-index:9;max-width:90vw;text-align:center}
+#toast.on{transform:translate(-50%,0)}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:8}
+#heart{position:absolute;right:14px;top:calc(14px + env(safe-area-inset-top,0px));opacity:.12;cursor:pointer;font-size:22px;background:none;padding:4px;color:var(--ink)}
+.shake{animation:sh .5s}
+@keyframes sh{20%{transform:translateX(-10px) rotate(-1deg)}40%{transform:translateX(10px) rotate(1deg)}60%{transform:translateX(-8px)}80%{transform:translateX(8px)}}
+.fall{position:fixed;top:-40px;font-size:30px;z-index:7;pointer-events:none;animation:fa linear forwards}
+@keyframes fa{to{transform:translateY(110vh) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="cv" aria-hidden="true"></canvas>
+<button id="heart" aria-label="A tiny secret">❤</button>
+<div id="toast" role="status"></div>
+
+<section id="hero">
+  <p class="sub">Madam Ji, ek kaam karo pehle.</p>
+  <h1 id="title">Happy Birthday!</h1>
+  <p>Cake ki saari candles bujhao. Flame pe tap karo. 🕯️</p>
+  <svg id="cake" viewBox="0 0 300 260" role="img" aria-label="Birthday cake with four candles">
+    <ellipse cx="150" cy="238" rx="130" ry="14" fill="#000" opacity=".2"/>
+    <rect x="30" y="150" width="240" height="84" rx="14" fill="#ff3d81"/>
+    <rect x="52" y="108" width="196" height="50" rx="12" fill="#ffb627"/>
+    <path d="M30 168q20 22 40 0t40 0 40 0 40 0 40 0 30 0v-14H30z" fill="#fff4e6"/>
+    <path d="M52 124q16 18 32 0t32 0 32 0 32 0 32 0v-14H52z" fill="#fff4e6"/>
+    <g id="candles"></g>
+    <text x="150" y="212" text-anchor="middle" font-family="Bagel Fat One,Impact,sans-serif" font-size="22" fill="#fff4e6">Madam Ji</text>
+  </svg>
+  <p class="sub" id="hint">0 / 4 bujhi</p>
+</section>
+
+<section id="locked">
+  <h2>Ek chhoti si message 💌</h2>
+  <p class="sub">Tap karte jao, padhte jao.</p>
+  <div class="chat" id="chat" aria-live="polite"></div>
+  <button id="next">Aage padho</button>
+</section>
+
+<section id="extras" style="display:none">
+  <h2>Naya resolution 📜</h2>
+  <div class="card">
+    <p>Thode nakhre kam, aur mujhe thoda kam pareshan karna.</p>
+    <div class="row" id="rrow">
+      <button id="yes">Haan, manzoor ✅</button>
+      <button id="no" class="alt">Bilkul nahi</button>
+    </div>
+  </div>
+
+  <h2 style="margin-top:48px">Nakhre meter 📈</h2>
+  <div class="card">
+    <p class="sub">Aaj ka level? Slide karke dekho.</p>
+    <input type="range" id="meter" min="0" max="100" value="30" aria-label="Nakhre meter">
+    <p id="mtxt">Manageable 😌</p>
+  </div>
+
+  <h2 style="margin-top:48px">Cake ka hisaab 🍰</h2>
+  <div class="card">
+    <p class="sub">Mere liye kitna bachaogi?</p>
+    <div class="big" id="slice">🍰</div>
+    <input type="range" id="cake2" min="0" max="100" value="5" aria-label="Cake share for me">
+    <p id="ctxt">Bas ek crumb? 😭</p>
+  </div>
+
+  <p style="margin-top:56px;font-size:22px">Happy Birthday, meri favourite insaan! ❤️🫶</p>
+  <p class="sub">Psst… yahan chhupe hain aur surprises. Title pe 5 baar tap karo, "nakhre" type karo, ya kone ka dil dhundo. 👀</p>
+</section>
+
+<script>
+const $=id=>document.getElementById(id);
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2600)};
+
+/* confetti */
+const cv=$('cv'),cx=cv.getContext('2d');let P=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function boom(n=140,x=innerWidth/2,y=innerHeight/3){
+  const c=['#ffb627','#ff3d81','#7be0c3','#fff4e6','#8f6bff'];
+  for(let i=0;i<n;i++){const a=Math.random()*6.28,s=4+Math.random()*9;
+    P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-5,r:3+Math.random()*5,c:c[i%5],l:120+Math.random()*60})}
+  if(!run){run=true;loop()}
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  P=P.filter(p=>p.l-->0);
+  P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.25;p.vx*=.99;cx.globalAlpha=Math.min(1,p.l/40);cx.fillStyle=p.c;cx.fillRect(p.x,p.y,p.r,p.r*1.6)});
+  P.length?requestAnimationFrame(loop):(run=false,cx.clearRect(0,0,cv.width,cv.height));
+}
+const rain=(e,n=24)=>{for(let i=0;i<n;i++){const s=document.createElement('span');s.className='fall';s.textContent=e[i%e.length];
+  s.style.left=Math.random()*100+'vw';s.style.animationDuration=(2+Math.random()*3)+'s';s.style.animationDelay=Math.random()*1.2+'s';
+  document.body.appendChild(s);setTimeout(()=>s.remove(),6500)}};
+
+/* candles */
+let out=0;const cg=$('candles');
+[85,125,175,215].forEach((x,i)=>{
+  cg.insertAdjacentHTML('beforeend',`<g><rect x="${x-5}" y="68" width="10" height="42" rx="3" fill="${['#7be0c3','#fff4e6','#8f6bff','#7be0c3'][i]}"/>
+  <g class="flame" tabindex="0" role="button" aria-label="Blow out candle ${i+1}" data-x="${x}"><ellipse cx="${x}" cy="56" rx="8" ry="13" fill="#ffb627"/><ellipse cx="${x}" cy="60" rx="4" ry="7" fill="#fff4e6"/></g></g>`)});
+function blow(el){
+  if(el.classList.contains('out'))return;el.classList.add('out');out++;
+  $('hint').textContent=out<4?out+' / 4 bujhi':'Wish maang li? 🤫';
+  if(out===4){boom();rain(['🎉','🎂','❤️'],18);setTimeout(()=>{$('locked').classList.add('on');$('locked').scrollIntoView({behavior:'smooth'});chatNext()},900)}
+}
+cg.addEventListener('click',e=>{const f=e.target.closest('.flame');f&&blow(f)});
+cg.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const f=e.target.closest('.flame');if(f){e.preventDefault();blow(f)}}});
+
+/* chat */
+const msgs=[
+ ['Happy Birthday, Madam Ji! 🎂😂❤️'],
+ ['Aaj ka din bahut special hai, kyunki aaj ke din meri favourite headache… mera favourite person duniya mein aaya tha. 😂❤️'],
+ ['Sach bolun toh tumhare saath life thodi zyada interesting hai — kabhi hasi, kabhi drama, kabhi nakhre… aur kabhi bina wajah meri class bhi lag jaati hai. 😭😂'],
+ ['Lekin honestly, tum jaisi ho waisi hi bahut special ho. ❤️'],
+ ['Bas ek chhota sa resolution… 👇'],
+ ['May your smile stay forever, tumhari saari wishes poori ho, aur haan… cake ka bada piece mere liye bachana. 🎂😌'],
+ ['Enjoy your day, birthday girl! 🎉']
+];
+let mi=0;
+function chatNext(){
+  if(mi>=msgs.length)return;
+  const d=document.createElement('div');d.className='b';d.textContent=msgs[mi][0];$('chat').appendChild(d);d.scrollIntoView({behavior:'smooth',block:'center'});
+  mi++;
+  if(mi===msgs.length){
+    $('next').textContent='Ab surprises dekho 🎁';
+    $('next').onclick=()=>{$('extras').style.display='block';$('next').style.display='none';boom(100);$('extras').scrollIntoView({behavior:'smooth'})};
+    const r=document.createElement('div');r.className='b me';r.textContent='Aur haan, tumhe bhi love you ❤️';setTimeout(()=>$('chat').appendChild(r),700);
+  }
+}
+$('next').onclick=chatNext;
+
+/* resolution */
+$('yes').onclick=()=>{boom(160);toast('Likha gaya. Ab wapas nahi le sakti 😌');rain(['😭','😂'],14)};
+const no=$('no');let dodges=0;
+function dodge(e){
+  e&&e.preventDefault();dodges++;
+  const row=$('rrow').getBoundingClientRect(),w=no.offsetWidth;
+  no.style.position='absolute';
+  no.style.left=Math.random()*(row.width-w)+'px';
+  no.style.top=(Math.random()*120-40)+'px';
+  if(dodges===3)toast('Bhaag mat, pakad ke dikhao 😏');
+  if(dodges===8){no.textContent='Theek hai, haan 🥺'}
+}
+no.addEventListener('mouseenter',dodge);no.addEventListener('touchstart',dodge,{passive:false});
+no.addEventListener('click',()=>{if(dodges>=8){$('yes').click();no.style.display='none'}else dodge()});
+
+/* nakhre meter */
+const lv=[[20,'Chill mode 😇'],[45,'Manageable 😌'],[70,'Thoda zyada hai 😅'],[90,'Danger zone 🚨'],[101,'Class lagne wali hai 😭']];
+$('meter').oninput=e=>{const v=+e.target.value;$('mtxt').textContent=lv.find(l=>v<l[0])[1];
+  if(v>=95){document.body.classList.add('shake');setTimeout(()=>document.body.classList.remove('shake'),500)}};
+
+/* cake share */
+$('cake2').oninput=e=>{const v=+e.target.value;
+  $('slice').style.transform=`scale(${1+v/50})`;
+  $('ctxt').textContent=v<20?'Bas ek crumb? 😭':v<50?'Thoda aur… 🥺':v<80?'Ab aayi baat samajh! 😌':v<100?'Almost… 👀':'Bada piece! Tum best ho 🎂❤️';
+  if(v==100){boom(120,innerWidth/2,innerHeight/2);$('slice').textContent='🎂'}else $('slice').textContent='🍰'};
+
+/* easter eggs */
+let taps=0,tt;
+$('title').onclick=()=>{taps++;clearTimeout(tt);tt=setTimeout(()=>taps=0,1500);if(taps===5){taps=0;rain(['😭','😂','🙈','🎂'],40);toast('Itni jaldi tap? Birthday girl impatient hai 😂')}};
+let typed='';addEventListener('keydown',e=>{typed=(typed+e.key.toLowerCase()).slice(-6);
+  if(typed==='nakhre'){document.body.classList.add('shake');rain(['💅','😤','👑'],30);toast('Nakhre detected 👑 Madam Ji ki jai ho!');setTimeout(()=>document.body.classList.remove('shake'),500)}});
+$('heart').onclick=()=>{boom(80,innerWidth-30,40);rain(['❤️','💖','🫶'],26);toast('Mil gaya! Tum meri favourite ho, headache ke saath bhi 🫶')};
+</script>
+</body>
+</html>
